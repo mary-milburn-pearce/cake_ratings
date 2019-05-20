@@ -1,0 +1,41 @@
+.container {
+    padding: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+
+}
+.submitCakeForm {
+    text-align: left;
+    border: 1px solid gray;
+    color: gray;
+    width: 35%;
+    padding: 2%;
+    margin-right: 1%;
+    display: inline-block;
+    vertical-align: top;
+}
+.listCakes {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+.listCakes img {
+    height: 6rem;
+    width: 8rem;
+}
+.eachCake {
+    height: 6.5rem;
+}
+.submitRatingForm {
+    border-radius: 20px;
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+#ratingSelect, #ratingText, #ratingInput {
+    display: inline;
+}
+.inputURL {
+    width: 90%;
+    height: 3rem;
+    margin-bottom: 1rem;
+}

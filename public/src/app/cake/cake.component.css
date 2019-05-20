@@ -1,0 +1,19 @@
+#cakeImg {
+    height: 12rem;
+    width: 15rem;
+    display: inline-block;
+    vertical-align: top;
+}
+.ratingInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 20rem;
+    padding-left: 1rem;
+    color: gray;
+}
+.ratingInfo h3 {
+    margin-top: 0px;
+}
+.ratingInfo h4 {
+    margin: 0px;
+}
