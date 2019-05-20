@@ -12,9 +12,9 @@ export class HttpService {
   postCake(newCake){
     return this._http.post('/cakes', newCake);  
   }
-  postRating(id, rating){
-    let url = '/cakes/' + id + '/rate';
-    console.log("postRating URL:", url);
+  postRating(rating){
+    console.log("HttpService.postRating:", rating);
+    let url = '/cakes/' + rating.cakeId + '/rate';
     return this._http.post(url, rating);
   }
 

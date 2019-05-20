@@ -8,12 +8,10 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent implements OnInit{
-  cakes: object;
+  cakes: any;
   newCake: object;
   addResults: object;
   cakeClicked: object;
-  newRating=[];
-  arrCakes: any;
   title = 'public';
   constructor(private _httpService: HttpService){}
 
@@ -26,14 +24,16 @@ export class AppComponent implements OnInit{
     let observable = this._httpService.getCakes();
     observable.subscribe(data => {
       console.log("Got our data!", data);
-      this.cakes = data;
-    })
+      this.cakes = [];
+      this.cakes = data['data'];
+      if (this.cakeClicked) {
+        this.updateCakeClicked();
+      }
+  })
   }
   onSubmitAdd(newCake) { 
-    console.log(`Submit called with: ${newCake}`);
     let observable = this._httpService.postCake(newCake);
     observable.subscribe(data => {
-      console.log("Returned:", data);
       if (data['errors']) {
         this.addResults['content']=data['message']
       } else {
@@ -43,20 +43,18 @@ export class AppComponent implements OnInit{
     this.newCake = { title: "", description: "" };
     this.addResults = { content: "" };
   }
-  onSubmitRating(cake) {
-    console.log('onSubmitRating:', this.frmRate)
-    let observable = this._httpService.postRating(cake['_id'], this.newRating);
+  postRating(ratingInfo) {
+    let observable = this._httpService.postRating(ratingInfo);
     observable.subscribe(data => {
       console.log("SubmitRating returned:", data);
       if (data['errors']) {
-        //this.rateResults['content']=data['message']
+        //possibly add an area for rate posting errors (not likely since comments optional)
       } else {
         this.getCakesFromService();
       }
     })
   }
   onClickCake(cake) {
-    console.log(`Cake clicked: ${JSON.stringify(cake)}`);
     let avg = 0;
     var ratingHeader="";
     if (cake.ratings.length == 0) {
@@ -70,12 +68,20 @@ export class AppComponent implements OnInit{
       ratingHeader = `Average rating: ${avg} stars`;
     }
     this.cakeClicked = {
+      id: cake._id,
       baker: cake.baker,
       imageURL: cake.imageURL,
       ratings: cake.ratings,
       averageRating: ratingHeader
     }
-    console.log('cakeClicked:', this.cakeClicked);
+  }
+  updateCakeClicked() {
+    for (let c of this.cakes) {
+      if (c['_id'] == this.cakeClicked['id']) {
+        this.onClickCake(c);
+        break;
+      }
+    }
   }
 
 }

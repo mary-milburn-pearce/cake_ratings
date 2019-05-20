@@ -8,7 +8,7 @@ module.exports = {
         console.log(req.body, req.params);
         Cake.find({}, function(err, cakes) {
             console.log(err, cakes);
-            res.json(cakes);
+            res.json({data: cakes});
         })
     },
 

@@ -1,7 +1,6 @@
 .container {
     padding: 2%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
-
 }
 .submitCakeForm {
     text-align: left;
@@ -25,15 +24,7 @@
 .eachCake {
     height: 6.5rem;
 }
-.submitRatingForm {
-    border-radius: 20px;
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-}
-#ratingSelect, #ratingText, #ratingInput {
-    display: inline;
-}
+
 .inputURL {
     width: 90%;
     height: 3rem;
