@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //HOOK UP TO ANGULAR
-//app.use(express.static(__dirname + '/public/dist/public'));
+app.use(express.static(__dirname + '/public/dist/public'));
 
 //ROUTES
 require('./server/routes')(app)

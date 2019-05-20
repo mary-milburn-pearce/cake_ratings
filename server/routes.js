@@ -7,4 +7,6 @@ module.exports = function(app){
     app.get('/cakes/:id', controller.getCake)
     app.post('/cakes', controller.addCake) 
     app.post('/cakes/:id/rate', controller.addRating)
+    app.put('/cakes/:id', controller.updCake)
+    app.delete('/cakes/:id', controller.remCake)
 }
